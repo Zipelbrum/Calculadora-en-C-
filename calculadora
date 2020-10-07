@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+
+ int suma(int N1, int N2){
+   int resultado = 0;
+   resultado = N1 + N2;
+   return resultado;  
+ }
+ int resta(int N1, int N2){
+   int resultado = 0;
+   resultado = N1 - N2;
+   return resultado;  
+ }
+
+ void multiplicacion(int var, int *puntero){
+  *puntero *=var;
+ }
+
+ void division(float var,float num_var,float *puntero){
+   *puntero = var/num_var;
+  }
+
+int main(void) {
+  char Seleccion;
+  int N1,N2;
+  int C;
+  int producto = 0;
+  int puntero;
+  int numero;
+  int var;
+  //variables de division.
+  float divs;
+  float divd;
+  float div;
+//variables para el promedio
+  double numerop,cantidad,i,promedio;
+  double sum=0;
+  int base,exponente,p=1;
+        printf("Ingrese el simbolo de la operacion que desea realizar: \nSuma(+) \nResta(-) \nMultiplicacion(*) \nDivision(/) \nPotencia(b) (Para este caso su primer valor sera la base y el segundo numero sera su exponente) \nIngresa(p) para promedio \nIngrese (1) para salir \n");
+        
+
+while (Seleccion != 1){
+  scanf ("%c", &Seleccion);
+   switch (Seleccion){
+     case '+':
+       printf("Ingrese la cantidad de numeros a sumar: ");
+       scanf("%i",&N2);
+       for (C=0;C<N2;C++){
+         printf("Ingrese el valor: ");
+         scanf("%i",&N1);
+         if(producto == 0){
+          producto = suma(producto, N1);
+         }else{
+            producto = suma(producto, N1);
+         }
+       }
+       printf("El resultado es: %i\n",producto);
+       break;
+       
+       case '-':
+       printf("Ingrese la cantidad de numeros a restar: ");
+       scanf("%i",&N2);
+       for (C=0;C<N2;C++){
+         printf("Ingrese el valor: ");
+         scanf("%i",&N1);
+         if(producto == 0){
+          producto = resta(producto, N1);
+         }else{
+            producto = resta(producto, N1);
+         }
+       }
+       printf("El resultado es: %i\n",producto);
+       break; 
+       case '*':
+       puntero = 1;
+       printf("Ingrese la cantidad de numeros a multiplicar: ");
+       scanf("%i",&numero);
+       for (C=0;C<numero;C++){
+       printf("Ingrese el valor: ");
+       scanf("%i",&var);
+       multiplicacion(var,&puntero);
+       }
+       printf("El resultado es: %i\n",puntero);
+       break;
+
+       case '/':
+        printf("Ingrese el dividendo");
+        scanf("%f",&divd);
+        printf("ingrese el divisor");
+        scanf("%f",&divs);
+        division(divd,divs,&div);
+        printf("el resultado: %f", div);
+
+       break;
+
+       case 'b':
+         printf("Introduce la base de la potencia: ");
+         scanf("%i",&base);
+         printf("Introduce el exponente de la potencia: ");
+         scanf("%i",&exponente);
+         for (C=0;C<exponente;C++){
+           p=p*base;
+         }
+         printf("El resultado es: %i", p );
+         return 0;
+         break;
+       case 'p':
+         printf("Ingrese la cantidad de numeros a calcular promedio: ");
+         scanf("%lf",&cantidad);
+         for (i=0;i<cantidad;i++){
+          
+          printf("Ingrese numeros: ");
+          scanf("%lf",&numerop);
+        
+          sum=sum+numerop;
+         }
+         //calculamos el promedio
+         promedio = sum/cantidad;
+         printf("el promedio es:  %lf",promedio);
+       break;
+       case 's':
+        printf("cerrarndo calculadora");
+        exit(0);
+       break;
+       default:
+        puts("Sea ingresado una opcion invalida\n");
+        scanf ("%c", &Seleccion);
+       break;
+      
+        }  
+     }
+     
+  }
